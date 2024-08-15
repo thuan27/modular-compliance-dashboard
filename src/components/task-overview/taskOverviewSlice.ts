@@ -85,8 +85,16 @@ const taskOverviewSlice = createSlice({
         task.status = action.payload.status;
       }
     },
+    updateTaskDetails: (state, action: PayloadAction<{ task: Task }>) => {
+      const { task } = action.payload;
+      const index = state.tasks.findIndex((t) => t.id === task.id);
+      if (index !== -1) {
+        state.tasks[index] = task;
+      }
+    },
   },
 });
 
-export const { addTask, updateTaskStatus } = taskOverviewSlice.actions;
+export const { addTask, updateTaskStatus, updateTaskDetails } =
+  taskOverviewSlice.actions;
 export default taskOverviewSlice.reducer;

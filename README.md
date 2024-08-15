@@ -1,50 +1,49 @@
-# React + TypeScript + Vite
+# Modular Compliance Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Môi Trường Phát Triển
 
-Currently, two official plugins are available:
+## Required
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Node.js (phiên bản 14.x trở lên) - Preferably node 18
+npm hoặc Yarn
 
-## Expanding the ESLint configuration
+React 18
+Vite 5
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+**Cài Đặt Dự Án**
 
-- Configure the top-level `parserOptions` property like this:
+git clone https://github.com/username/modular-compliance-dashboard.git
+cd modular-compliance-dashboard
+npm install hoặc yarn install
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+**Cấu Hình AWS Amplify**
+npm install -g @aws-amplify/cli
+amplify configure
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+- Đăng nhập và tạo key theo hướng dẫn
+- amplify init
+- amplify add auth
+- amplify push
+- amplify add hosting
+- amplify publish
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+**Chạy Ứng Dụng**
+Run: npm run dev
+Build: npm run build
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+**Tài Liệu Mã Nguồn**
+
+🚀 Component: Các thành phần giao diện người dùng được tổ chức trong thư mục src/components.
+🛠️ Redux: Cấu hình Redux và các slice state nằm trong thư mục src/redux.
+📦 Element: Cấu hình các element dùng chung (input, table, loading...)
+🚀 Asset: Lưu trữ các scss, images, sound...
+🛠️ Type: Cấu hình interface
+
+## Cấu Hình Redux
+
+src/redux/store.ts: Cấu hình store Redux.
+src/redux/globalSlice.ts: Quản lý trạng thái toàn cục như loading.
+
+## Cấu Hình AWS Amplify
+
+src/aws-exports.js: Cấu hình AWS Amplify cho dự án của bạn, bao gồm thông tin xác thực và các dịch vụ AWS.
