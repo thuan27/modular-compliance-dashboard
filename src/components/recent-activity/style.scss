@@ -1,0 +1,43 @@
+.recent-activity {
+  padding: 20px;
+  border-radius: 8px;
+  height: calc(100vh - 117px);
+  margin: 30px;
+  border-radius: 30px;
+  background: #1f1d2b;
+  box-shadow: 15px 15px 30px rgb(25, 25, 25), -15px -15px 30px rgb(60, 60, 60);
+
+  .list-recent {
+    overflow-y: auto;
+    height: calc(100vh - 203px);
+    .card {
+      transition: transform 0.4s ease;
+      &:hover {
+        transform: scale(0.98);
+      }
+    }
+  }
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  .MuiListItem-root {
+    background: #00000029;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    color: #fff;
+  }
+
+  .MuiDivider-root {
+    background-color: #444;
+  }
+
+  .MuiListItemText-primary {
+    font-weight: 500;
+  }
+
+  .MuiListItemText-secondary {
+    color: #bbb;
+  }
+}

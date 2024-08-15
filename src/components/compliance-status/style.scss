@@ -1,0 +1,72 @@
+.compliance-status {
+  padding: 20px;
+  border-radius: 30px;
+  background: #1f1d2b;
+  box-shadow: 15px 15px 30px rgb(25, 25, 25), -15px -15px 30px rgb(60, 60, 60);
+  height: calc(100vh - 117px);
+  margin: 30px;
+  overflow-y: auto;
+
+  .title {
+    margin-bottom: 20px;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+  }
+
+  .card-border {
+    background-image: linear-gradient(
+      163deg,
+      white 0%,
+      #ea7c69 50%,
+      #ea7c69 100%
+    );
+    transition: all 0.3s;
+    border-radius: 15px;
+    .metric-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 15px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      height: 230px;
+
+      .metric-name {
+        margin-bottom: 12px;
+        color: black;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .card-content {
+        padding: 16px;
+      }
+
+      &:hover {
+        transform: scale(0.98);
+        box-shadow: 0 15px 16px rgba(0, 0, 0, 0.2);
+        .metric-name {
+          color: #ea7c69;
+        }
+      }
+    }
+    &:hover {
+      box-shadow: 0px 0px 30px 2px #e44a2f7a;
+    }
+  }
+
+  .progress-container {
+    margin: 16px 0;
+
+    .progress-bar {
+      color: #ea7c69;
+    }
+
+    .progress-text {
+      position: relative;
+      font-weight: bold;
+      color: #333;
+    }
+  }
+}

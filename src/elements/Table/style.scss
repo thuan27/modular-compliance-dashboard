@@ -1,0 +1,27 @@
+.table-container {
+  border-radius: 20px;
+  height: calc(100vh - 205px);
+
+  .table {
+    .header-table {
+      background-color: #ea7c69;
+      .MuiTableCell-root.MuiTableCell-head {
+        color: white !important;
+      }
+    }
+
+    .body-table {
+      .task-row {
+        &.pending {
+          background-color: #fff9f8;
+        }
+        &.completed {
+          background-color: #e8f5e9;
+        }
+        &.overdue {
+          background-color: #ffebee;
+        }
+      }
+    }
+  }
+}
