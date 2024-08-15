@@ -1,49 +1,66 @@
 # Modular Compliance Dashboard
 
-## Môi Trường Phát Triển
+## Development Environment
 
 ## Required
 
-Node.js (phiên bản 14.x trở lên) - Preferably node 18
+Node.js (version 14.x or higher) - Preferably Node 18
 npm hoặc Yarn
 
 React 18
 Vite 5
 
-**Cài Đặt Dự Án**
+**Project Setup**
 
 git clone https://github.com/username/modular-compliance-dashboard.git
 cd modular-compliance-dashboard
-npm install hoặc yarn install
+'npm install' or 'yarn install'
 
-**Cấu Hình AWS Amplify**
-npm install -g @aws-amplify/cli
-amplify configure
+**AWS Amplify Configuration**
 
-- Đăng nhập và tạo key theo hướng dẫn
+- npm install -g @aws-amplify/cli
+- amplify configure
+  (Install AWS Amplify CLI globally)
 - amplify init
 - amplify add auth
 - amplify push
 - amplify add hosting
 - amplify publish
 
-**Chạy Ứng Dụng**
+**Running the Application**
 Run: npm run dev
 Build: npm run build
 
-**Tài Liệu Mã Nguồn**
+**Source Code Documentation**
 
-🚀 Component: Các thành phần giao diện người dùng được tổ chức trong thư mục src/components.
-🛠️ Redux: Cấu hình Redux và các slice state nằm trong thư mục src/redux.
-📦 Element: Cấu hình các element dùng chung (input, table, loading...)
-🚀 Asset: Lưu trữ các scss, images, sound...
-🛠️ Type: Cấu hình interface
+🚀 Components: UI components are organized in the src/components directory.
 
-## Cấu Hình Redux
+- Component.tsx: TypeScript and HTML code file
+- style.scss: Independent styles for each component
+- {name}Slice.ts: Setup of toolkit slice for each component
+  🛠️ Redux: Redux configuration and state slices are in the src/redux directory.
 
-src/redux/store.ts: Cấu hình store Redux.
-src/redux/globalSlice.ts: Quản lý trạng thái toàn cục như loading.
+- globalSlice: Global slice action setup for global state
+- rootReducer: Combines reducers for each component
+- store: Configures the Redux store
 
-## Cấu Hình AWS Amplify
+📦 Elements: Configuration of shared elements (input, table, loading...)
 
-src/aws-exports.js: Cấu hình AWS Amplify cho dự án của bạn, bao gồm thông tin xác thực và các dịch vụ AWS.
+🚀 Assets: Stores SCSS files, images, sounds...
+
+🛠️ Types: Configuration of interfaces
+
+📦 vite-env: Stores base API URLs, project keys
+
+🚀 package.json: Lists installed packages
+
+🛠️ tsconfig.json, vite.config.ts: Project configuration files
+
+## Redux Configuration
+
+src/redux/store.ts: Redux store configuration.
+src/redux/globalSlice.ts: Manages global state such as loading.
+
+## AWS Amplify Configuration
+
+src/aws-exports.js: Configures AWS Amplify for your project, including authentication information and AWS services.
