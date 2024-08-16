@@ -85,7 +85,7 @@ const ComplianceStatus: React.FC = () => {
           </Typography>
         </Grid>
         {metrics.map((metric) => (
-          <Grid item xs={4} key={metric.label} sx={{ padding: "20px" }}>
+          <Grid item xs={4} key={metric.label}>
             <div className="card-border">
               <Card className="metric-card">
                 <CardContent className="card-content">
