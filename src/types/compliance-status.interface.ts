@@ -1,5 +1,5 @@
 export interface ComplianceMetric {
-  name: string;
+  label: string;
   value: number;
 }
 

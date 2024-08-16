@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import {
@@ -11,11 +11,42 @@ import {
 } from "@mui/material";
 import { PieChart } from "@mui/x-charts";
 import "./style.scss"; // Import SCSS file
+import { Task } from "../../types/task-overview.interface";
 
 const ComplianceStatus: React.FC = () => {
-  const metrics = useSelector(
-    (state: RootState) => state.complianceStatus.metrics
-  );
+  const tasks = useSelector((state: RootState) => state.taskOverview.tasks);
+
+  const calculateMetrics = (tasks: Task[]) => {
+    const totalTasks = tasks.length;
+    const pendingTasks = tasks.filter(
+      (task) => task.status === "pending"
+    ).length;
+    const overdueTasks = tasks.filter(
+      (task) => task.status === "overdue"
+    ).length;
+    const completedTasks = tasks.filter(
+      (task) => task.status === "completed"
+    ).length;
+
+    return [
+      {
+        label: "Pending Tasks",
+        value: parseFloat(((pendingTasks / totalTasks) * 100).toFixed(2)),
+      },
+      {
+        label: "Overdue Tasks",
+        value: parseFloat(((overdueTasks / totalTasks) * 100).toFixed(2)),
+      },
+      {
+        label: "Completed Tasks",
+        value: parseFloat(((completedTasks / totalTasks) * 100).toFixed(2)),
+      },
+    ];
+  };
+
+  const metrics = useMemo(() => {
+    return calculateMetrics(tasks);
+  }, [tasks]);
 
   return (
     <div className="compliance-status">
@@ -54,7 +85,7 @@ const ComplianceStatus: React.FC = () => {
           </Typography>
         </Grid>
         {metrics.map((metric) => (
-          <Grid item xs={4} key={metric.name} sx={{ padding: "20px" }}>
+          <Grid item xs={4} key={metric.label} sx={{ padding: "20px" }}>
             <div className="card-border">
               <Card className="metric-card">
                 <CardContent className="card-content">
@@ -63,7 +94,7 @@ const ComplianceStatus: React.FC = () => {
                     component="div"
                     className="metric-name"
                   >
-                    {metric.name}
+                    {metric.label}
                   </Typography>
                   <div className="progress-container">
                     <CircularProgress

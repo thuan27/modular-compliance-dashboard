@@ -2,7 +2,7 @@ import { configureStore } from "@reduxjs/toolkit";
 import taskOverviewReducer from "../components/task-overview/taskOverviewSlice";
 import complianceStatusReducer from "../components/compliance-status/complianceStatusSlice";
 import recentActivityReducer from "../components/recent-activity/recentActivitySlice";
-import globalReducer from "./globalSlice";
+import globalReducer from "./slices/globalSlice";
 
 export const store = configureStore({
   reducer: {

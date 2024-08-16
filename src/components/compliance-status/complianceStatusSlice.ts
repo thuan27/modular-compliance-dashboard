@@ -1,13 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { ComplianceStatusState } from "../../types/compliance-status.interface";
+import { mockData } from "../../datas/mockData";
 
-const initialState: ComplianceStatusState = {
-  metrics: [
-    { name: "Pending Tasks", value: 50 },
-    { name: "Overdue Tasks", value: 15 },
-    { name: "Completed Tasks", value: 35 },
-  ],
-};
+const initialState: ComplianceStatusState = mockData.complianceStatus;
 
 const complianceStatusSlice = createSlice({
   name: "complianceStatus",
@@ -15,9 +10,11 @@ const complianceStatusSlice = createSlice({
   reducers: {
     updateMetric(
       state,
-      action: PayloadAction<{ name: string; value: number }>
+      action: PayloadAction<{ label: string; value: number }>
     ) {
-      const metric = state.metrics.find((m) => m.name === action.payload.name);
+      const metric = state.metrics.find(
+        (m) => m.label === action.payload.label
+      );
       if (metric) {
         metric.value = action.payload.value;
       }

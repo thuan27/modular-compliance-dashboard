@@ -3,71 +3,9 @@ import {
   Activity,
   RecentActivityState,
 } from "../../types/recent-activity.interface";
+import { mockData } from "../../datas/mockData";
 
-const initialState: RecentActivityState = {
-  activities: [
-    {
-      timestamp: "2024-08-01 10:00",
-      description: "Completed Compliance Report",
-      user: "Alice",
-    },
-    {
-      timestamp: "2024-08-02 14:30",
-      description: "Reviewed Audit Logs",
-      user: "Bob",
-    },
-    {
-      timestamp: "2024-08-02 14:31",
-      description: "Reviewed Audit Logs",
-      user: "Felix",
-    },
-    {
-      timestamp: "2024-08-02 14:31",
-      description: "Reviewed Audit Logs",
-      user: "Felix",
-    },
-    {
-      timestamp: "2024-08-02 14:31",
-      description: "Reviewed Audit Logs",
-      user: "Felix",
-    },
-    {
-      timestamp: "2024-08-02 14:31",
-      description: "Reviewed Audit Logs",
-      user: "Felix",
-    },
-    {
-      timestamp: "2024-08-02 14:31",
-      description: "Reviewed Audit Logs",
-      user: "Felix",
-    },
-    {
-      timestamp: "2024-08-02 14:31",
-      description: "Reviewed Audit Logs",
-      user: "Felix",
-    },
-    {
-      timestamp: "2024-08-02 14:31",
-      description: "Reviewed Audit Logs",
-      user: "Felix",
-    },
-    {
-      timestamp: "2024-08-02 14:31",
-      description: "Reviewed Audit Logs",
-      user: "Felix",
-    },
-    {
-      timestamp: "2024-08-02 14:31",
-      description: "Reviewed Audit Logs",
-      user: "Felix",
-    },
-    {
-      timestamp: "2024-08-02 14:31",
-      description: "Reviewed Audit Logs",
-      user: "Felix",
-    },
-  ],
-};
+const initialState: RecentActivityState = mockData.recentActivityState;
 
 const recentActivitySlice = createSlice({
   name: "recentActivity",

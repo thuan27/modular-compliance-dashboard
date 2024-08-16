@@ -18,31 +18,33 @@ interface CustomTableProps {
   rows: any[];
 }
 
-const CustomTable: React.FC<CustomTableProps> = ({ headers, rows }) => {
-  return (
-    <TableContainer className="table-container">
-      <Table className="table">
-        <TableHead className="header-table">
-          <TableRow>
-            {headers.map((header) => (
-              <TableCell key={header.key}>{header.label}</TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody className="body-table">
-          {rows.map((row) => (
-            <TableRow key={row.id} className={`task-row ${row.status}`}>
+const CustomTable: React.FC<CustomTableProps> = React.memo(
+  ({ headers, rows }) => {
+    return (
+      <TableContainer className="table-container">
+        <Table className="table">
+          <TableHead className="header-table">
+            <TableRow>
               {headers.map((header) => (
-                <TableCell key={header.key}>
-                  {header.render ? header.render(row) : row[header.key]}
-                </TableCell>
+                <TableCell key={header.key}>{header.label}</TableCell>
               ))}
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
-  );
-};
+          </TableHead>
+          <TableBody className="body-table">
+            {rows.map((row) => (
+              <TableRow key={row.id} className={`task-row ${row.status}`}>
+                {headers.map((header) => (
+                  <TableCell key={header.key}>
+                    {header.render ? header.render(row) : row[header.key]}
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    );
+  }
+);
 
 export default CustomTable;

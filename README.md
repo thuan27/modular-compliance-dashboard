@@ -16,6 +16,11 @@ git clone https://github.com/username/modular-compliance-dashboard.git
 cd modular-compliance-dashboard
 'npm install' or 'yarn install'
 
+**Running the Application**
+Run: npm run dev
+Build: npm run build
+Test: npm test
+
 **AWS Amplify Configuration**
 
 - npm install -g @aws-amplify/cli
@@ -26,10 +31,6 @@ cd modular-compliance-dashboard
 - amplify push
 - amplify add hosting
 - amplify publish
-
-**Running the Application**
-Run: npm run dev
-Build: npm run build
 
 **Source Code Documentation**
 
@@ -54,7 +55,7 @@ Build: npm run build
 
 🚀 package.json: Lists installed packages
 
-🛠️ tsconfig.json, vite.config.ts: Project configuration files
+🛠️ tsconfig.json, vite.config.ts, jest.config.ts: Project configuration files
 
 ## Redux Configuration
 

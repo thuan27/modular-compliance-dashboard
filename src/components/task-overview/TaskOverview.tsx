@@ -4,7 +4,7 @@ import { RootState } from "../../redux/store";
 import { updateTaskDetails, updateTaskStatus } from "./taskOverviewSlice";
 import { Select, MenuItem } from "@mui/material";
 import CustomTable from "../../elements/Table";
-import { setLoading } from "../../redux/globalSlice";
+import { setLoading } from "../../redux/slices/globalSlice";
 import { Task } from "../../types/task-overview.interface";
 
 import "./style.scss"; // Import SCSS file
