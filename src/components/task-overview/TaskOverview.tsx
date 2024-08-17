@@ -6,10 +6,11 @@ import { Select, MenuItem } from "@mui/material";
 import CustomTable from "../../elements/Table";
 import { setLoading } from "../../redux/slices/globalSlice";
 import { Task } from "../../types/task-overview.interface";
-
-import "./style.scss"; // Import SCSS file
 import EditTaskModal from "./EditTaskModal";
 import CustomButton from "../../elements/Button";
+import { addActivity } from "../recent-activity/recentActivitySlice";
+
+import "./style.scss"; // Import SCSS file
 
 const TaskOverview: React.FC = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,15 @@ const TaskOverview: React.FC = () => {
       try {
         await new Promise((resolve) => setTimeout(resolve, 1000));
         dispatch(updateTaskStatus({ id, status }));
+        const taskCurrent = tasks.find((task) => task.id === id);
+
+        dispatch(
+          addActivity({
+            timestamp: new Date().toISOString(),
+            description: `Task "${taskCurrent?.title}" status changed to ${status}`,
+            user: "Current User",
+          })
+        );
       } catch (error) {
         console.error("Failed to update task status:", error);
       } finally {
@@ -41,7 +51,16 @@ const TaskOverview: React.FC = () => {
       dispatch(setLoading(true));
       try {
         await new Promise((resolve) => setTimeout(resolve, 1000));
+        const index = tasks.findIndex((t) => t.id === updatedTask.id);
+
         dispatch(updateTaskDetails({ task: updatedTask }));
+        dispatch(
+          addActivity({
+            timestamp: new Date().toISOString(),
+            description: `Task "${tasks[index].title}" update information`,
+            user: "Current User",
+          })
+        );
         setEditTask(null);
       } catch (error) {
         console.error("Failed to update task status:", error);
